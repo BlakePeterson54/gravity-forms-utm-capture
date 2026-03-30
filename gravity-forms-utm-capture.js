@@ -248,7 +248,7 @@ function buildAttributionFromTouch(touch) {
 function getValidAttributionState() {
   var stored = readStorage(
     CONFIG.storageKeyAttribution,
-    createEmptyAttribution,
+    createEmptyAttribution
   );
 
   if (isExpired(stored)) {
@@ -412,7 +412,7 @@ function bindFormSubmitSafeguard() {
         var latestAttributionState = getValidAttributionState();
         var latestNavState = readStorage(
           CONFIG.storageKeyNav,
-          createEmptyNavState,
+          createEmptyNavState
         );
 
         injectAllTrackedForms(latestAttributionState, latestNavState);
