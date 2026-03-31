@@ -24,7 +24,7 @@ var CONFIG = {
 /*
   GF field map by form id
 
-  key = logical value name we want to inject
+  key = canonical field name (the data point we want to capture, e.g. utm_source, gclid, request_uri)
   value = GF field id for that form
 
   form ids:
