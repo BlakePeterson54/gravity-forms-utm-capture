@@ -136,7 +136,7 @@ I also tested:
 ## Proof (screenshots)
 These tests validate that the script correctly:
 - Uses a per form field map (FORM_FIELD_MAP) to support multiple GF forms with different IDs
-- Field injection loop: injects hidden field values by constructing GF input IDs (`input_<formID>_<fieldID>`) and repopulating all matching DOM nodes (mobile duplicates)
+- Field injection loop: injects hidden field values by constructing GF input IDs (`input_${formD}>_${fieldID}`) and repopulating all matching DOM nodes (mobile duplicates)
 - Captures first touch UTMs/GCLID from an initial landing URL
 - Persists attribution across internal navigation (multi-page journeys)
 - Overwrites attribution when a new tagged session occurs (last touch wins)
