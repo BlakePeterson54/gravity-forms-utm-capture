@@ -73,7 +73,7 @@ Stores:
 
 ### Attribution overwrite
 A new attribution object is only created when a **core UTM touch** is detected (i.e., a real campaign visit).
-Practically: utm_soruce, utm_medium, utm_campaign must be present; utm_term/utm_content are optional.
+Practically: utm_source, utm_medium, utm_campaign must be present; utm_term/utm_content are optional.
 
 - `utm_source`
 - `utm_medium`
@@ -135,12 +135,12 @@ I also tested:
 
 ## Proof (screenshots)
 These tests validate that the script correctly:
-- Uses a per form field map (FORM_FIELD_MAP) to support mutiple GF forms with different IDs
+- Uses a per form field map (FORM_FIELD_MAP) to support multiple GF forms with different IDs
 - Field injection loop: injects hidden field values by constructing GF input IDs (input_<formID>_<fieldId>) and repopulating all matching DOM nodes (mobile duplicates)
-- Captures first touch UTMS/GCLID from an initial landing URL
+- Captures first touch UTMs/GCLID from an initial landing URL
 - Persists attribution across internal navigation (multi-page journeys)
 - Overwrites attribution when a new tagged session occurs (last touch wins)
-**Note: GF "Embed URL" shows the page the user submitted the form on**
+- **Note: GF "Embed URL" shows the page the user submitted the form on**
 
 ### Test URLs
 - Test URL (A):
@@ -163,11 +163,11 @@ Confirms first-touch capture on a tagged landing page submit:
 
 **Steps: UTM tagged LP (Test URL A) -> submit from LP**
 
-**Start state desktop (localstorage):**
+**Start state desktop (localStorage):**
 ![Test 1 - desktop lead attribution last touch](proof/test-url-a-desktop-attribution-last-touch-object.png)
 ![Test 1 - desktop lead internal nav](proof/test-url-a-desktop-internal-nav-object.png)
 
-**Start start mobile (localstorage):**
+**Start state mobile (localStorage):**
 ![Test 1 - mobile lead attribution last touch](proof/test-1-mobile-attribution-last-touch-object.png)
 ![Test 1 - mobile lead internal nav](proof/test-1-mobile-internal-nav-object.png)
 
@@ -185,11 +185,11 @@ Confirms persistence across internal navigation:
 
 **Steps: UTM tagged LP (Test URL A) -> navigate internally -> submit**
 
-**Precondition (localstorage after Test 1):**
+**Precondition (localStorage after Test 1):**
 ![Test 2 - lead attribution last touch](proof/test-url-a-desktop-attribution-last-touch-object.png)
 ![Test 2 - lead internal nav](proof/test-url-a-desktop-internal-nav-object.png)
 
-**Submit state (localstorage):**
+**Submit state (localStorage):**
 ![Test 2 - submit lead attribution last touch](proof/test-2-submit-attribution-last-touch-object.png)
 ![Test 2 - submit lead internal nav](proof/test-2-submit-internal-nav-object.png)
 
@@ -204,11 +204,11 @@ Confirms stored attribution is reused when a user returns without UTMs:
 
 **Steps: Use Test URL A -> nav off site -> revisit site with no UTMs → navigate → submit**
 
-**Precondition (localstorage after Test 1):**
+**Precondition (localStorage after Test 1):**
 ![Test 3 - lead attribution last touch](proof/test-url-a-desktop-attribution-last-touch-object.png)
 ![Test 3 - lead internal nav](proof/test-url-a-desktop-internal-nav-object.png)
 
-**Submit state (localstorage):**
+**Submit state (localStorage):**
 ![Test 3 - submit lead attribution lat touch](proof/test-3-submit-attribution-last-touch-object.png)
 ![Test 3 - submit lead internal nav](proof/test-3-submit-internal-nav-object.png)
 
@@ -221,13 +221,13 @@ Confirms overwrite only happens on a core UTM touch (utm_source, utm_medium, utm
 - request_uri matches the last internal page prior to submit
 - Gravity Forms Source URL = submit page
 
-**Steps: Use Test URL A -> nav off site -> revisit the site with new UTMS (Test URL B) -> navigate if you'd like -> submit**
+**Steps: Use Test URL A -> nav off site -> revisit the site with new UTMs (Test URL B) -> navigate if you'd like -> submit**
 
-**Precondition (localstorage after Test 1):**
+**Precondition (localStorage after Test 1):**
 ![Test 4 - lead attribution last touch](proof/test-url-a-desktop-attribution-last-touch-object.png)
 ![Test 4 - lead internal nav](proof/test-url-a-desktop-internal-nav-object.png)
 
-**Submit state(localstorage):**
+**Submit state(localStorage):**
 ![Test 4 - submit lead attribution last touch](proof/test-4-submit-attribution-last-touch-object.png)
 ![Test 4 - submit lead internal nav](proof/test-4-submit-internal-nav-object.png)
 
