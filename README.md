@@ -136,7 +136,7 @@ I also tested:
 ## Proof (screenshots)
 These tests validate that the script correctly:
 - Uses a per form field map (FORM_FIELD_MAP) to support multiple GF forms with different IDs
-- Field injection loop: injects hidden field values by constructing GF input IDs (input_<formID>_<fieldId>) and repopulating all matching DOM nodes (mobile duplicates)
+- Field injection loop: injects hidden field values by constructing GF input IDs (`input_<formID>_<fieldID>`) and repopulating all matching DOM nodes (mobile duplicates)
 - Captures first touch UTMs/GCLID from an initial landing URL
 - Persists attribution across internal navigation (multi-page journeys)
 - Overwrites attribution when a new tagged session occurs (last touch wins)
@@ -183,7 +183,7 @@ Confirms persistence across internal navigation:
 - request_uri = previous internal page before the submit page
 - Gravity Forms Source URL = submit page
 
-**Steps: UTM tagged LP (Test URL A) -> navigate internally -> submit**
+**Steps: UTM tagged LP (Test URL A) -> internal page -> submit**
 
 **Precondition (localStorage after Test 1):**
 ![Test 2 - lead attribution last touch](proof/test-url-a-desktop-attribution-last-touch-object.png)
@@ -209,7 +209,7 @@ Confirms stored attribution is reused when a user returns without UTMs:
 ![Test 3 - lead internal nav](proof/test-url-a-desktop-internal-nav-object.png)
 
 **Submit state (localStorage):**
-![Test 3 - submit lead attribution lat touch](proof/test-3-submit-attribution-last-touch-object.png)
+![Test 3 - submit lead attribution last touch](proof/test-3-submit-attribution-last-touch-object.png)
 ![Test 3 - submit lead internal nav](proof/test-3-submit-internal-nav-object.png)
 
 **GF entry:**
